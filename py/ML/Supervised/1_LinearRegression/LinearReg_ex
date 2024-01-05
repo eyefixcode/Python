@@ -1,0 +1,68 @@
+import pandas as pd
+from sklearn.linear_model import LinearRegression
+from sklearn.model_selection import train_test_split
+import matplotlib.pyplot as plt
+import numpy as np
+
+# Generate mock data for the DataFrame
+df = pd.DataFrame({'Age': np.random.randint(20, 90, size=100),
+                    'BMI': np.random.normal(28, 5, size=100),
+                    'Blood Pressure': np.random.normal(135, 15, size=100),
+                    'Disease Severity': np.random.uniform(1, 5, size=100)})
+
+# Define independent and dependent variables
+X = df[['Age', 'BMI', 'Blood Pressure']]  # Features
+y = df['Disease Severity']  # Target variable
+
+# Split data into training and testing sets
+X_train, X_test, y_train, y_test = train_test_split(X, y, test_size=0.2, random_state=42)
+
+# Create and train the linear regression model
+model = LinearRegression()
+model.fit(X_train, y_train)
+
+# Visualize the relationships with enhancements
+plt.figure(figsize=(12, 6))
+for i, feature in enumerate(X.columns):
+    plt.subplot(1, 3, i + 1)
+
+    # Calculate correlation coefficient
+    corr_coef = np.corrcoef(X_train[feature], y_train)[0, 1]
+
+    # Plot scatter points
+    plt.scatter(X_train[feature], y_train)
+
+    # Generate evenly spaced feature values for smooth regression line
+    x_vals = np.linspace(X_train[feature].min(), X_train[feature].max(), 100)
+    
+    # Set other features to their mean values, repeating for each x_val
+    X_other_features = np.tile(X_train.drop(feature, axis=1).mean(axis=0).values, (len(x_vals), 1))
+
+    # Predict using the current feature and fixed other features
+    y_pred = model.predict(np.hstack([np.array(x_vals).reshape(-1, 1), X_other_features]))
+    
+    # Plot regression line
+    plt.plot(x_vals, y_pred, color='red', label='Regression Line')
+
+    # Add informative labels and title
+    plt.xlabel(feature)
+    plt.ylabel('Disease Severity')
+    plt.title(f'Relationship between {feature} and Disease Severity\nCorrelation Coefficient: {corr_coef:.2f}')
+
+    # Annotate with equation of regression line
+    m = model.coef_[0]
+    b = model.intercept_
+    plt.annotate(f'y = {m:.2f}x + {b:.2f}', xy=(0.65, 0.85), xycoords='axes fraction')
+
+plt.tight_layout()
+plt.show()
+
+# Evaluate model performance
+print("Model coefficients:", model.coef_)
+print("Intercept:", model.intercept_)
+print("R-squared score:", model.score(X_test, y_test))
+
+# Example prediction for a new patient
+new_patient = pd.DataFrame({'Age': [50], 'BMI': [30], 'Blood Pressure': [140]})
+predicted_severity = model.predict(new_patient)
+print("Predicted disease severity for new patient:", predicted_severity[0])
