@@ -1,4 +1,4 @@
-# k means clustering unsupervised ML example 
+# k means clustering unsupervised ML example via python
 
 import pandas as pd
 from sklearn.cluster import KMeans
