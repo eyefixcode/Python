@@ -1,3 +1,5 @@
+# Dimensionality healthcare example using python, utilizing mock healthcare data
+
 import numpy as np
 import pandas as pd
 from sklearn.decomposition import PCA
