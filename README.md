@@ -81,5 +81,4 @@ James Settles
 Health Informatics & Data Analytics
 
 - 💼 LinkedIn: https://www.linkedin.com/in/james-settles/
-- 📄 Resume: https://eyefixcode.github.io/assets/resume/Resume_Settles.pdf
 - 📩 Email: Settles.James.B@gmail.com
