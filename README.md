@@ -49,8 +49,7 @@ This repository serves as part of my broader technical portfolio and reflects a 
 - reusability ♻️  
 - ease of navigation 🗺️  
 
-—not a single monolithic codebase.
-
+-
 ---
 
 ## 👤 Author
