@@ -8,12 +8,24 @@ Each top-level folder contains its own README with detailed explanations, setup 
 ---
 
 ## Repository Structure
-Python/
-├── Apps/
-├── DataImportTools/
-├── DataVisualization/
-├── MachineLearning/
-└── OS/
+
+This repository is organized by category.  
+Each folder below links directly to its own `README.md` with detailed documentation.
+
+- 📁 **[Apps](https://github.com/eyefixcode/Python/tree/main/Apps/README.md)**  
+  Runnable Python applications and demos.
+
+- 📁 **[DataImportTools](https://github.com/eyefixcode/Python/tree/main/DataImportTools/README.md)**  
+  Data ingestion, cleaning, and transformation utilities.
+
+- 📁 **[DataVisualization](https://github.com/eyefixcode/Python/tree/main/DataVisualization/README.md)**  
+  Exploratory analysis and visualization workflows.
+
+- 📁 **[MachineLearning](https://github.com/eyefixcode/Python/tree/main/MachineLearning/README.md)**  
+  Applied machine learning experiments and examples.
+
+- 📁 **[OS](https://github.com/eyefixcode/Python/tree/main/OS/README.md)**  
+  Automation and operating-system-level utilities.
 
 ---
 
